@@ -1,4 +1,4 @@
-//export from getliststudents
+// export from getliststudents
 
 export default function getListStudents() {
   return [
