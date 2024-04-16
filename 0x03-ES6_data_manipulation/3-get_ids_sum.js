@@ -1,3 +1,5 @@
-const getStudentIdsSum = (students) => students.reduce((prevVal, cur) => prevVal + cur.id, 0);
-export default getStudentIdsSum;
+function getStudentIdsSum(students) {
+  return students.reduce((sum, student) => sum + student.id, 0);
+}
 
+export default getStudentIdsSum;
