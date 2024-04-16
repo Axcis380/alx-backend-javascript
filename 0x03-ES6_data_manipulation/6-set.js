@@ -1,7 +1,5 @@
-function setFromArray(arr) {
-  const set = new Set();
-  arr.forEach(item => set.add(item));
-  return set;
-}
+// 6-set.js
+
+const setFromArray = (arr) => new Set(arr);
 
 export default setFromArray;
