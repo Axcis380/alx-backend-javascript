@@ -1,5 +1,5 @@
 //export getlist from 0-get_list_students.js
-export default function getListStudents(){
+export default function getListStudents() {
 	
 		return [
 			{
