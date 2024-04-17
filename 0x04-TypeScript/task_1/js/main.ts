@@ -1,38 +1,37 @@
-// Define the Student interface
-interface Student {
-  firstName: string;
-  lastName: string;
-  age: number;
-  location: string;
+// Define the Teacher interface with required and optional attributes
+interface Teacher {
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly fullTimeEmployee: boolean;
+  readonly location: string;
+  yearsOfExperience?: number;
+  [key: string]: any; // Allow any other additional properties
 }
 
-// Create two student objects
-const student1: Student = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 20,
-  location: "New York"
-};
+// Create a class implementing the Teacher interface
+class TeacherClass implements Teacher {
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly fullTimeEmployee: boolean;
+  readonly location: string;
+  yearsOfExperience?: number;
+  [key: string]: any;
 
-const student2: Student = {
-  firstName: "Jane",
-  lastName: "Smith",
-  age: 22,
-  location: "Los Angeles"
-};
+  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, additionalAttributes: { [key: string]: any }) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullTimeEmployee = fullTimeEmployee;
+    this.location = location;
+    this.yearsOfExperience = additionalAttributes.yearsOfExperience;
+    Object.keys(additionalAttributes).forEach((key) => {
+      if (key !== "yearsOfExperience") {
+        this[key] = additionalAttributes[key];
+      }
+    });
+  }
+}
 
-// Create an array containing the two student objects
-const studentsList: Student[] = [student1, student2];
+// Create a new instance of TeacherClass
+const teacher3 = new TeacherClass('John', 'Doe', false, 'London', { contract: false });
 
-// Create a table element
-const table = document.createElement("table");
-
-// Create a table row for each student and append it to the table
-studentsList.forEach(student => {
-  const row = table.insertRow();
-  row.insertCell().textContent = student.firstName;
-  row.insertCell().textContent = student.location;
-});
-
-// Append the table to the body of the document
-document.body.appendChild(table);
+console.log(teacher3);
