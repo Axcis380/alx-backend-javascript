@@ -1,38 +1,30 @@
-// Define the Student interface
-interface Student {
-  firstName: string;
-  lastName: string;
-  age: number;
-  location: string;
-}
+// Import all the subjects and the Teacher interface from the corresponding files
+import { Subjects } from './subjects/Teacher';
+import { cpp } from './subjects/Cpp';
+import { java } from './subjects/Java';
+import { react } from './subjects/React';
 
-// Create two student objects
-const student1: Student = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 20,
-  location: "New York"
+// Create and export one Teacher object cTeacher with experienceTeachingC = 10
+export const cTeacher: Subjects.Teacher = {
+  firstName: 'Guillaume',
+  lastName: 'Salva',
+  experienceTeachingC: 10,
 };
 
-const student2: Student = {
-  firstName: "Jane",
-  lastName: "Smith",
-  age: 22,
-  location: "Los Angeles"
-};
+// For Cpp subject
+console.log('C++');
+cpp.setTeacher(cTeacher);
+console.log(cpp.getRequirements());
+console.log(cpp.getAvailableTeacher());
 
-// Create an array containing the two student objects
-const studentsList: Student[] = [student1, student2];
+// For Java subject
+console.log('Java');
+java.setTeacher(cTeacher);
+console.log(java.getRequirements());
+console.log(java.getAvailableTeacher());
 
-// Create a table element
-const table = document.createElement("table");
-
-// Create a table row for each student and append it to the table
-studentsList.forEach(student => {
-  const row = table.insertRow();
-  row.insertCell().textContent = student.firstName;
-  row.insertCell().textContent = student.location;
-});
-
-// Append the table to the body of the document
-document.body.appendChild(table);
+// For React subject
+console.log('React');
+react.setTeacher(cTeacher);
+console.log(react.getRequirements());
+console.log(react.getAvailableTeacher());
