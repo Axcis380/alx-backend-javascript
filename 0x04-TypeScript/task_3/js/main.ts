@@ -1,38 +1,23 @@
-// Define the Student interface
-interface Student {
-  firstName: string;
-  lastName: string;
-  age: number;
-  location: string;
-}
+// Triple slash directive to include dependencies
+/// <reference path="./crud.d.ts" />
 
-// Create two student objects
-const student1: Student = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 20,
-  location: "New York"
+// Import RowID and RowElement from interface.ts
+import { RowID, RowElement } from './interface';
+// Import everything from crud.js as CRUD
+import * as CRUD from 'crud';
+
+// Create an object called row
+const row: RowElement = {
+  firstName: 'Guillaume',
+  lastName: 'Salva',
 };
 
-const student2: Student = {
-  firstName: "Jane",
-  lastName: "Smith",
-  age: 22,
-  location: "Los Angeles"
-};
+// Create a const variable named newRowID
+const newRowID: RowID = CRUD.insertRow(row);
 
-// Create an array containing the two student objects
-const studentsList: Student[] = [student1, student2];
+// Update row with an age field set to 23
+const updatedRow: RowElement = { ...row, age: 23 };
 
-// Create a table element
-const table = document.createElement("table");
-
-// Create a table row for each student and append it to the table
-studentsList.forEach(student => {
-  const row = table.insertRow();
-  row.insertCell().textContent = student.firstName;
-  row.insertCell().textContent = student.location;
-});
-
-// Append the table to the body of the document
-document.body.appendChild(table);
+// Call the updateRow and deleteRow commands
+CRUD.updateRow(newRowID, updatedRow);
+CRUD.deleteRow(newRowID);
