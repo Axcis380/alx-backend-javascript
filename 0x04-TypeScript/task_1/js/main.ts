@@ -35,3 +35,14 @@ class TeacherClass implements Teacher {
 const teacher3 = new TeacherClass('John', 'Doe', false, 'London', { contract: false });
 
 console.log(teacher3);
+
+// Create an object using the Directors interface
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  location: 'London',
+  fullTimeEmployee: true,
+  numberOfReports: 17,
+};
+
+console.log(director1);
